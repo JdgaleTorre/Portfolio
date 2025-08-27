@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import BigBen from "../images/BigBen.jpg";
 import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -12,27 +13,7 @@ import Hero from "../components/Hero.astro";
   </main>
 
   <!-- About Section -->
-  <section
-    id="about"
-    class="min-h-screen max-w-5xl mx-auto p-6 flex flex-col justify-center"
-  >
-    <h3 class="text-3xl font-bold mb-4 text-primary">About Me</h3>
-    <p class="text-lg leading-relaxed mb-4">
-      Full Stack Developer with 10+ years of experience building high-quality,
-      responsive websites and web applications. Skilled in <strong
-        class="text-primary">React</strong
-      >, <strong class="text-primary">JavaScript/TypeScript</strong>, <strong
-        class="text-primary">HTML5</strong
-      >, <strong class="text-primary">CSS3</strong>, <strong
-        class="text-primary">Python</strong
-      >, and <strong class="text-primary">C#</strong>. Experienced in delivering
-      fast, secure, and scalable front-end solutions, with expertise in <strong
-        class="text-primary">AWS</strong
-      > deployments, <strong class="text-primary">Git</strong> workflows, <strong
-        class="text-primary">CI/CD</strong
-      > pipelines, and performance optimization.
-    </p>
-  </section>
+  <About />
 
   <!-- Projects Section -->
   <section
