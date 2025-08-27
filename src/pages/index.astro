@@ -1,0 +1,68 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import BigBen from "../images/BigBen.jpg";
+import Hero from "../components/Hero.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <main class="md:text-2xl">
+    <!-- Hero Section -->
+    <Hero />
+  </main>
+
+  <!-- About Section -->
+  <section
+    id="about"
+    class="min-h-screen max-w-5xl mx-auto p-6 flex flex-col justify-center"
+  >
+    <h3 class="text-3xl font-bold mb-4 text-primary">About Me</h3>
+    <p class="text-lg leading-relaxed mb-4">
+      Full Stack Developer with 10+ years of experience building high-quality,
+      responsive websites and web applications. Skilled in <strong
+        class="text-primary">React</strong
+      >, <strong class="text-primary">JavaScript/TypeScript</strong>, <strong
+        class="text-primary">HTML5</strong
+      >, <strong class="text-primary">CSS3</strong>, <strong
+        class="text-primary">Python</strong
+      >, and <strong class="text-primary">C#</strong>. Experienced in delivering
+      fast, secure, and scalable front-end solutions, with expertise in <strong
+        class="text-primary">AWS</strong
+      > deployments, <strong class="text-primary">Git</strong> workflows, <strong
+        class="text-primary">CI/CD</strong
+      > pipelines, and performance optimization.
+    </p>
+  </section>
+
+  <!-- Projects Section -->
+  <section
+    id="projects"
+    class="min-h-screen max-w-5xl mx-auto p-6 flex flex-col justify-center bg-surface"
+  >
+    <h3 class="text-3xl font-bold mb-8 text-primary">Projects</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-primary text-white p-6 rounded-lg shadow-lg">
+        <h4 class="text-2xl font-semibold mb-2">Project One</h4>
+        <p>A short description of project one goes here.</p>
+      </div>
+      <div class="bg-primary-dark text-white p-6 rounded-lg shadow-lg">
+        <h4 class="text-2xl font-semibold mb-2">Project Two</h4>
+        <p>A short description of project two goes here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section
+    id="contact"
+    class="min-h-screen max-w-5xl mx-auto p-6 flex flex-col justify-center"
+  >
+    <h3 class="text-3xl font-bold mb-4 text-primary">Contact Me</h3>
+    <p class="mb-4">Feel free to reach out via email or social media!</p>
+    <a
+      href="mailto:youremail@example.com"
+      class="bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-lg w-max"
+      >Email Me</a
+    >
+  </section>
+</Layout>
