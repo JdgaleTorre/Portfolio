@@ -4,9 +4,10 @@ import { Image } from "astro:assets";
 import BigBen from "../images/BigBen.jpg";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
+import Project from "../components/Project.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Welcome to my Portfolio.">
   <main class="md:text-2xl">
     <!-- Hero Section -->
     <Hero />
@@ -16,22 +17,7 @@ import About from "../components/About.astro";
   <About />
 
   <!-- Projects Section -->
-  <section
-    id="projects"
-    class="min-h-screen max-w-5xl mx-auto p-6 flex flex-col justify-center bg-surface"
-  >
-    <h3 class="text-3xl font-bold mb-8 text-primary">Projects</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="bg-primary text-white p-6 rounded-lg shadow-lg">
-        <h4 class="text-2xl font-semibold mb-2">Project One</h4>
-        <p>A short description of project one goes here.</p>
-      </div>
-      <div class="bg-primary-dark text-white p-6 rounded-lg shadow-lg">
-        <h4 class="text-2xl font-semibold mb-2">Project Two</h4>
-        <p>A short description of project two goes here.</p>
-      </div>
-    </div>
-  </section>
+  <Project />
 
   <!-- Contact Section -->
   <section

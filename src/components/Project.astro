@@ -1,0 +1,99 @@
+---
+const projects = [
+  {
+    title: "DevTools",
+    content: `DevTools is a productivity and project management platform designed to streamline workflows through an intuitive Kanban-style interface. Built with a modern stack (Next.js, TypeScript, tRPC, Drizzle ORM, and Tailwind CSS), it allows users to create boards, manage tasks, and visualize progress effortlessly. 
+ The app features AI-powered assistance to automatically generate and organize tasks, saving time and improving planning efficiency. With real-time updates, customizable themes, and drag-and-drop functionality, DevTools provides a modern and elegant experience for developers and teams looking to optimize their daily work.`,
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "tRPC",
+      "Prisma",
+      "Tailwind CSS",
+      "AI Integration",
+    ],
+    demo: "https://devtools.josegale.com",
+    code: "https://github.com/JdgaleTorre/DevTools",
+  },
+  {
+    title: "Movinder",
+    content: `Movinder is a mobile-friendly web application built with Next.js that allows users to rate movies and receive personalized recommendations. The app collects rating data to train a neural network, which powers a content-based filtering system for accurate movie suggestions. It integrates analytics to understand user preferences and adapts dynamically to provide a tailored movie discovery experience.`,
+    tags: ["TypeScript", "Next.js", "Prisma", "Tailwind CSS", "Data Analytics"],
+    demo: "https://movinder.josegale.com",
+    code: "https://github.com/JdgaleTorre/Movinder",
+  },
+
+  {
+    title: "Memory Game",
+    content: `A classic memory-matching game where players flip cards to find pairs of identical symbols. This project demonstrates logic-based JavaScript programming and DOM manipulation to create an interactive and engaging user experience. The responsive design ensures smooth gameplay across devices while maintaining a simple and intuitive interface.`,
+    tags: ["JavaScript", "HTML", "CSS"],
+    demo: "https://jdgaletorre.github.io/MemoryGame/",
+    code: "https://github.com/JdgaleTorre/MemoryGame",
+  },
+  {
+    title: "Pokedex",
+    content: `Pokédex is a fan-made Pokémon encyclopedia built with Next.js and TypeScript. It fetches and displays comprehensive data for each Pokémon, including types, evolutions, and abilities. Designed with a clean UI and optimized for performance, this project demonstrates dynamic API integration, responsive design, and component-based architecture.`,
+    tags: ["TypeScript", "Next.js", "HTML", "Tailwind CSS"],
+    demo: "https://pokedex.josegale.com",
+    code: "https://github.com/JdgaleTorre/Pokedex",
+  },
+  {
+    title: "Game of Life",
+    content: `A visual and interactive implementation of Conway’s Game of Life — a mathematical simulation that explores how simple rules can create complex patterns. This project focuses on algorithmic logic, grid-based rendering, and efficient JavaScript animation loops. Users can watch evolving generations unfold in real-time.`,
+    wikipedia: "https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life",
+    tags: ["JavaScript", "HTML", "CSS"],
+    demo: "https://jdgaletorre.github.io/GameOfLife2/",
+    code: "https://github.com/JdgaleTorre/GameOfLife2",
+  },
+  {
+    title: "Pomodoro Timer",
+    content: `A minimalist and productive Pomodoro timer built as a Progressive Web App (PWA) using Next.js. It helps users maintain focus through timed work sessions and structured breaks. The app supports offline mode, customizable intervals, and a smooth user interface — ideal for boosting productivity and maintaining consistent work habits.`,
+    wikipedia: "https://en.wikipedia.org/wiki/Pomodoro_Technique",
+    tags: ["Next.js", "PWA", "HTML", "CSS"],
+    demo: "https://pomodoro-timer-lac.vercel.app/",
+    code: "https://github.com/JdgaleTorre/PomodoroTimer",
+  },
+  {
+    title: "Knight's Tour",
+    content: `An algorithmic visualization of the Knight’s Tour problem, where a chess knight visits every square on the board exactly once. Built with pure JavaScript and CSS, this project highlights algorithmic optimization, recursive backtracking, and real-time board visualization for an educational yet fun coding challenge.`,
+    tags: ["JavaScript", "HTML", "CSS"],
+    demo: "https://jdgaletorre.github.io/KnightTour/",
+    code: "https://github.com/JdgaleTorre/KnightTour",
+  },
+];
+---
+
+<section
+  id="projects"
+  class="min-h-screen max-w-5xl mx-auto p-6 flex flex-col justify-center"
+>
+  <h3 class="text-3xl font-bold mb-8 text-primary">Projects</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {
+      projects.map((project) => (
+        <div class="border bg-card border-gray-300 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300">
+          <h4 class="text-2xl font-semibold mb-2 text-accent">
+            {project.title}
+          </h4>
+          <p class="text-lg mb-4">{project.content}</p>
+          <a
+            href={project.demo}
+            target="_blank"
+            class="text-primary hover:underline mr-4"
+          >
+            View Project
+          </a>
+          {project.code && (
+            <a
+              href={project.code}
+              target="_blank"
+              class="text-primary hover:underline"
+            >
+              GitHub Repo
+            </a>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</section>

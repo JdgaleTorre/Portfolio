@@ -19,9 +19,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body
-    class="min-h-screen grid grid-rows-[auto_1fr_auto] bg-background dark:bg-background-dark dark:text-white"
-  >
+  <body class="min-h-screen grid grid-rows-[auto_1fr_auto] bg-background">
     <!-- Header -->
     <NavBar client:load />
 
