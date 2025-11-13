@@ -4,6 +4,8 @@ import Project from "../components/Project.astro";
 import NavBar from "../components/Navbar";
 import { ThemeToggle } from "../components/ThemeToggle";
 import "../styles/global.css";
+import Experience from "../components/Experience.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   title: string;
@@ -57,9 +59,9 @@ const { title } = Astro.props;
       <main class="relative">
         <Hero />
         <Project />
-        <!-- <Experience /> -->
+        <Experience />
       </main>
-      <!-- <Footer /> -->
+      <Footer />
     </div>
   </body>
 </html>

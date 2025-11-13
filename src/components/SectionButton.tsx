@@ -24,7 +24,7 @@ export default function HeroButton({
                     });
                 }
             }}
-            className={`group px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 flex items-center space-x-2 ${className}`}
+            className={`group cursor-pointer px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 flex items-center space-x-2 ${className}`}
         >
             {children}
         </button >
