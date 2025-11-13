@@ -1,113 +1,161 @@
-import { useState } from "react"
-import { ThemeToggle } from "./ThemeToggle"
+import { useState, useEffect } from 'react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 
-export default function NavBar() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
+// interface NavigationProps {
+//     darkMode: boolean;
+//     setDarkMode: (value: boolean) => void;
+// }
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen)
-    }
+export default function Navigation() {
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState('home');
+
+    const [darkMode, setDarkMode] = useState(true);
+
+    useEffect(() => {
+        if (darkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [darkMode]);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+
+            // Scroll spy
+            const sections = ['home', 'projects', 'experience'];
+            const current = sections.find(section => {
+                const element = document.getElementById(section);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    return rect.top <= 100 && rect.bottom >= 100;
+                }
+                return false;
+            });
+            if (current) {
+                setActiveSection(current);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            const offset = 80;
+            const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+                top: elementPosition - offset,
+                behavior: 'smooth'
+            });
+        }
+        setIsMobileMenuOpen(false);
+    };
+
+    const navLinks = [
+        { id: 'home', label: 'Home' },
+        { id: 'projects', label: 'Projects' },
+        { id: 'experience', label: 'Experience' }
+    ];
 
     return (
-        <>
-            {/* Header */}
-            <header className="fixed top-0 w-full bg-background dark:bg-background-dark shadow-md z-50 h-16">
-                <nav className="max-w-6xl mx-auto flex justify-between items-center p-4 h-full">
-                    <h1 className="text-xl font-bold text-primary dark:text-primary-dark">My Portfolio</h1>
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+            ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg shadow-lg'
+            : 'bg-transparent'
+            }`}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center h-20">
+                    {/* Logo */}
+                    <button
+                        onClick={() => scrollToSection('home')}
+                        className="group flex items-center space-x-2"
+                    >
+                        <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                            <span className="text-white">JG</span>
+                        </div>
+                        <span className="hidden sm:block text-slate-800 dark:text-white transition-colors">
+                            Jose Gale
+                        </span>
+                    </button>
 
                     {/* Desktop Navigation */}
-                    <ul className="hidden md:flex space-x-6">
-                        <li>
-                            <a href="#hero" className="hover:text-accent dark:hover:text-accent-dark dark:text-white">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#about" className="hover:text-accent dark:hover:text-accent-dark dark:text-white">
-                                About
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#projects" className="hover:text-accent dark:hover:text-accent-dark dark:text-white">
-                                Projects
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#contact" className="hover:text-accent dark:hover:text-accent-dark dark:text-white">
-                                Contact
-                            </a>
-                        </li>
-                    </ul>
+                    <div className="hidden md:flex items-center space-x-8">
+                        {navLinks.map(link => (
+                            <button
+                                key={link.id}
+                                onClick={() => scrollToSection(link.id)}
+                                className={`relative text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${activeSection === link.id ? 'text-blue-600 dark:text-blue-400' : ''
+                                    }`}
+                            >
+                                {link.label}
+                                {activeSection === link.id && (
+                                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-600"></span>
+                                )}
+                            </button>
+                        ))}
 
-                    <div className="flex items-center space-x-4">
-                        <ThemeToggle />
-
-                        <button onClick={toggleMenu} className="md:hidden flex flex-col space-y-1 p-2" aria-label="Toggle menu">
-                            <span
-                                className={`block w-6 h-0.5 bg-current transition-transform duration-300 ${isMenuOpen ? "rotate-45 translate-y-2" : ""}`}
-                            ></span>
-                            <span
-                                className={`block w-6 h-0.5 bg-current transition-opacity duration-300 ${isMenuOpen ? "opacity-0" : ""}`}
-                            ></span>
-                            <span
-                                className={`block w-6 h-0.5 bg-current transition-transform duration-300 ${isMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}
-                            ></span>
+                        {/* Dark Mode Toggle */}
+                        <button
+                            onClick={() => setDarkMode(!darkMode)}
+                            className="p-2 rounded-lg bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors"
+                            aria-label="Toggle dark mode"
+                        >
+                            {darkMode ? (
+                                <Sun className="w-5 h-5 text-yellow-500" />
+                            ) : (
+                                <Moon className="w-5 h-5 text-slate-700" />
+                            )}
                         </button>
                     </div>
-                </nav>
-            </header>
 
-            <div
-                className={`fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden transition-opacity duration-300 ${isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-                    }`}
-                onClick={toggleMenu}
-            />
-
-            <nav
-                className={`fixed top-0 right-0 h-full w-80 bg-background dark:bg-background-dark shadow-lg z-50 md:hidden transform transition-transform duration-300 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"
-                    }`}
-            >
-                <div className="flex flex-col h-full p-6 pt-20">
-                    <ul className="flex flex-col space-y-8 text-lg font-medium">
-                        <li>
-                            <a
-                                href="#hero"
-                                className="block hover:text-accent dark:hover:text-accent-dark dark:text-white transition-colors"
-                                onClick={toggleMenu}
-                            >
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#about"
-                                className="block hover:text-accent dark:hover:text-accent-dark dark:text-white transition-colors"
-                                onClick={toggleMenu}
-                            >
-                                About
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#projects"
-                                className="block hover:text-accent dark:hover:text-accent-dark dark:text-white transition-colors"
-                                onClick={toggleMenu}
-                            >
-                                Projects
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#contact"
-                                className="block hover:text-accent dark:hover:text-accent-dark dark:text-white transition-colors"
-                                onClick={toggleMenu}
-                            >
-                                Contact
-                            </a>
-                        </li>
-                    </ul>
+                    {/* Mobile Menu Button */}
+                    <div className="flex md:hidden items-center space-x-4">
+                        <button
+                            onClick={() => setDarkMode(!darkMode)}
+                            className="p-2 rounded-lg bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors"
+                            aria-label="Toggle dark mode"
+                        >
+                            {darkMode ? (
+                                <Sun className="w-5 h-5 text-yellow-500" />
+                            ) : (
+                                <Moon className="w-5 h-5 text-slate-700" />
+                            )}
+                        </button>
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className="text-slate-600 dark:text-slate-300"
+                            aria-label="Toggle menu"
+                        >
+                            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                        </button>
+                    </div>
                 </div>
-            </nav>
-        </>
-    )
+            </div>
+
+            {/* Mobile Menu */}
+            {isMobileMenuOpen && (
+                <div className="md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800">
+                    <div className="px-4 py-6 space-y-4">
+                        {navLinks.map(link => (
+                            <button
+                                key={link.id}
+                                onClick={() => scrollToSection(link.id)}
+                                className={`block w-full text-left px-4 py-2 rounded-lg transition-colors ${activeSection === link.id
+                                    ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
+                                    : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                                    }`}
+                            >
+                                {link.label}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
+        </nav>
+    );
 }

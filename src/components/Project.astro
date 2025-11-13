@@ -1,99 +1,204 @@
 ---
-const projects = [
+import { ExternalLink, Filter, Github } from "lucide-react";
+
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  category: string;
+  liveUrl: string;
+  codeUrl: string;
+}
+
+const projects: Project[] = [
   {
+    id: "1",
     title: "DevTools",
-    content: `DevTools is a productivity and project management platform designed to streamline workflows through an intuitive Kanban-style interface. Built with a modern stack (Next.js, TypeScript, tRPC, Drizzle ORM, and Tailwind CSS), it allows users to create boards, manage tasks, and visualize progress effortlessly. 
+    description: `DevTools is a productivity and project management platform designed to streamline workflows through an intuitive Kanban-style interface. Built with a modern stack (Next.js, TypeScript, tRPC, Drizzle ORM, and Tailwind CSS), it allows users to create boards, manage tasks, and visualize progress effortlessly. 
  The app features AI-powered assistance to automatically generate and organize tasks, saving time and improving planning efficiency. With real-time updates, customizable themes, and drag-and-drop functionality, DevTools provides a modern and elegant experience for developers and teams looking to optimize their daily work.`,
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "tRPC",
-      "Prisma",
-      "Tailwind CSS",
-      "AI Integration",
-    ],
-    demo: "https://devtools.josegale.com",
-    code: "https://github.com/JdgaleTorre/DevTools",
+    tags: ["React", "TypeScript", "AI/LLMs", "Node.js", "PostgreSQL"],
+    liveUrl: "https://devtools.josegale.com",
+    codeUrl: "https://github.com/JdgaleTorre/DevTools",
+    image:
+      "https://images.unsplash.com/photo-1575388902449-6bca946ad549?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxBSSUyMGRhc2hib2FyZCUyMGludGVyZmFjZXxlbnwxfHx8fDE3NjI5Njc3OTB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    category: "AI",
   },
   {
+    id: "2",
     title: "Movinder",
-    content: `Movinder is a mobile-friendly web application built with Next.js that allows users to rate movies and receive personalized recommendations. The app collects rating data to train a neural network, which powers a content-based filtering system for accurate movie suggestions. It integrates analytics to understand user preferences and adapts dynamically to provide a tailored movie discovery experience.`,
-    tags: ["TypeScript", "Next.js", "Prisma", "Tailwind CSS", "Data Analytics"],
-    demo: "https://movinder.josegale.com",
-    code: "https://github.com/JdgaleTorre/Movinder",
+    description: `Movinder is a mobile-friendly web application built with Next.js that allows users to rate movies and receive personalized recommendations. The app collects rating data to train a neural network, which powers a content-based filtering system for accurate movie suggestions. It integrates analytics to understand user preferences and adapts dynamically to provide a tailored movie discovery experience.`,
+    tags: ["Python", "Django", "Machine Learning", "React", "PostgreSQL"],
+    liveUrl: "https://movinder.josegale.com",
+    codeUrl: "https://github.com/JdgaleTorre/Movinder",
+    image:
+      "https://images.unsplash.com/photo-1688678004647-945d5aaf91c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3ZpZSUyMGNpbmVtYSUyMHNjcmVlbnxlbnwxfHx8fDE3NjMwNDQxNDF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    category: "AI",
   },
 
   {
-    title: "Memory Game",
-    content: `A classic memory-matching game where players flip cards to find pairs of identical symbols. This project demonstrates logic-based JavaScript programming and DOM manipulation to create an interactive and engaging user experience. The responsive design ensures smooth gameplay across devices while maintaining a simple and intuitive interface.`,
-    tags: ["JavaScript", "HTML", "CSS"],
-    demo: "https://jdgaletorre.github.io/MemoryGame/",
-    code: "https://github.com/JdgaleTorre/MemoryGame",
-  },
-  {
+    id: "3",
     title: "Pokedex",
-    content: `Pokédex is a fan-made Pokémon encyclopedia built with Next.js and TypeScript. It fetches and displays comprehensive data for each Pokémon, including types, evolutions, and abilities. Designed with a clean UI and optimized for performance, this project demonstrates dynamic API integration, responsive design, and component-based architecture.`,
-    tags: ["TypeScript", "Next.js", "HTML", "Tailwind CSS"],
-    demo: "https://pokedex.josegale.com",
-    code: "https://github.com/JdgaleTorre/Pokedex",
+    description: `Pokédex is a fan-made Pokémon encyclopedia built with Next.js and TypeScript. It fetches and displays comprehensive data for each Pokémon, including types, evolutions, and abilities. Designed with a clean UI and optimized for performance, this project demonstrates dynamic API integration, responsive design, and component-based architecture.`,
+    tags: ["React", "RESTful APIs", "Tailwind CSS", "TypeScript"],
+    liveUrl: "https://pokedex.josegale.com",
+    codeUrl: "https://github.com/JdgaleTorre/Pokedex",
+    image:
+      "https://images.unsplash.com/photo-1628968434441-d9c1c66dcde7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb2tlbW9uJTIwY29sb3JmdWwlMjBnYW1lfGVufDF8fHx8MTc2MzA0NDE0Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    category: "Frontend",
   },
   {
+    id: "4",
+    title: "Memory Game",
+    description: `A classic memory-matching game where players flip cards to find pairs of identical symbols. This project demonstrates logic-based JavaScript programming and DOM manipulation to create an interactive and engaging user experience. The responsive design ensures smooth gameplay across devices while maintaining a simple and intuitive interface.`,
+    tags: ["JavaScript", "CSS3", "HTML5", "Animations"],
+    liveUrl: "https://jdgaletorre.github.io/MemoryGame/",
+    codeUrl: "https://github.com/JdgaleTorre/MemoryGame",
+    image:
+      "https://images.unsplash.com/photo-1759868937448-423d3c7c8133?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZW1vcnklMjBjYXJkcyUyMGdhbWV8ZW58MXx8fHwxNjMwNDQxNDJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    category: "Frontend",
+  },
+  {
+    id: "5",
     title: "Game of Life",
-    content: `A visual and interactive implementation of Conway’s Game of Life — a mathematical simulation that explores how simple rules can create complex patterns. This project focuses on algorithmic logic, grid-based rendering, and efficient JavaScript animation loops. Users can watch evolving generations unfold in real-time.`,
-    wikipedia: "https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life",
-    tags: ["JavaScript", "HTML", "CSS"],
-    demo: "https://jdgaletorre.github.io/GameOfLife2/",
-    code: "https://github.com/JdgaleTorre/GameOfLife2",
+    description: `A visual and interactive implementation of Conway’s Game of Life — a mathematical simulation that explores how simple rules can create complex patterns. This project focuses on algorithmic logic, grid-based rendering, and efficient JavaScript animation loops. Users can watch evolving generations unfold in real-time.`,
+    tags: ["JavaScript", "Canvas", "Algorithms", "HTML5"],
+    liveUrl: "https://jdgaletorre.github.io/GameOfLife2/",
+    codeUrl: "https://github.com/JdgaleTorre/GameOfLife2",
+    image:
+      "https://images.unsplash.com/photo-1761078739072-a10f63f3e478?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMHBhdHRlcm4lMjBncmlkfGVufDF8fHx8MTc2MzA0NDE0M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    category: "Frontend",
   },
   {
+    id: "6",
     title: "Pomodoro Timer",
-    content: `A minimalist and productive Pomodoro timer built as a Progressive Web App (PWA) using Next.js. It helps users maintain focus through timed work sessions and structured breaks. The app supports offline mode, customizable intervals, and a smooth user interface — ideal for boosting productivity and maintaining consistent work habits.`,
-    wikipedia: "https://en.wikipedia.org/wiki/Pomodoro_Technique",
-    tags: ["Next.js", "PWA", "HTML", "CSS"],
-    demo: "https://pomodoro-timer-lac.vercel.app/",
-    code: "https://github.com/JdgaleTorre/PomodoroTimer",
+    description: `A minimalist and productive Pomodoro timer built as a Progressive Web App (PWA) using Next.js. It helps users maintain focus through timed work sessions and structured breaks. The app supports offline mode, customizable intervals, and a smooth user interface — ideal for boosting productivity and maintaining consistent work habits.`,
+    tags: ["React", "PWA", "Tailwind CSS"],
+    liveUrl: "https://pomodoro-timer-lac.vercel.app/",
+    codeUrl: "https://github.com/JdgaleTorre/PomodoroTimer",
+    image:
+      "https://images.unsplash.com/photo-1734024653249-c6ba7b742ad2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0aW1lciUyMGNsb2NrJTIwbWluaW1hbGlzdHxlbnwxfHx8fDE3NjMwNDQxNDJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    category: "Frontend",
   },
   {
+    id: "7",
     title: "Knight's Tour",
-    content: `An algorithmic visualization of the Knight’s Tour problem, where a chess knight visits every square on the board exactly once. Built with pure JavaScript and CSS, this project highlights algorithmic optimization, recursive backtracking, and real-time board visualization for an educational yet fun coding challenge.`,
+    description: `An algorithmic visualization of the Knight’s Tour problem, where a chess knight visits every square on the board exactly once. Built with pure JavaScript and CSS, this project highlights algorithmic optimization, recursive backtracking, and real-time board visualization for an educational yet fun coding challenge.`,
     tags: ["JavaScript", "HTML", "CSS"],
-    demo: "https://jdgaletorre.github.io/KnightTour/",
-    code: "https://github.com/JdgaleTorre/KnightTour",
+    liveUrl: "https://jdgaletorre.github.io/KnightTour/",
+    codeUrl: "https://github.com/JdgaleTorre/KnightTour",
+    category: "Frontend",
+    image:
+      "https://images.unsplash.com/photo-1734024653249-c6ba7b742ad2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0aW1lciUyMGNsb2NrJTIwbWluaW1hbGlzdHxlbnwxfHx8fDE3NjMwNDQxNDJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
 ];
+
+const categories = ["All", "AI", "Frontend", "Backend"];
+const filteredProjects =
+  "All" === "All"
+    ? projects
+    : projects.filter((project) => project.category === "All");
 ---
 
-<section
-  id="projects"
-  class="min-h-screen max-w-5xl mx-auto p-6 flex flex-col justify-center"
->
-  <h3 class="text-3xl font-bold mb-8 text-primary">Projects</h3>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    {
-      projects.map((project) => (
-        <div class="border bg-card border-gray-300 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300">
-          <h4 class="text-2xl font-semibold mb-2 text-accent">
-            {project.title}
-          </h4>
-          <p class="text-lg mb-4">{project.content}</p>
-          <a
-            href={project.demo}
-            target="_blank"
-            class="text-primary hover:underline mr-4"
+<section id="projects" class="py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    {/* Section Header */}
+    <div class="text-center mb-16">
+      <h2 class="text-slate-900 dark:text-white mb-4">Featured Projects</h2>
+      <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        A showcase of my recent work across frontend, backend, and AI-powered
+        applications
+      </p>
+    </div>
+
+    {/* Filter Buttons */}
+    <div class="flex flex-wrap justify-center gap-3 mb-12">
+      <div
+        class="flex items-center space-x-2 text-slate-600 dark:text-slate-400"
+      >
+        <Filter className="w-4 h-4" />
+        <span class="text-sm">Filter:</span>
+      </div>
+      <!-- {
+        categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setActiveFilter(category)}
+            class={`px-5 py-2 rounded-lg transition-all transform hover:scale-105 ${
+              activeFilter === category
+                ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg"
+                : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
+            }`}
           >
-            View Project
-          </a>
-          {project.code && (
-            <a
-              href={project.code}
-              target="_blank"
-              class="text-primary hover:underline"
-            >
-              GitHub Repo
-            </a>
-          )}
-        </div>
-      ))
-    }
+            {category}
+          </button>
+        ))
+      } -->
+    </div>
+
+    {/* Projects Grid */}
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        filteredProjects.map((project) => (
+          <div class="group relative bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+            {/* Gradient border effect */}
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+
+            <div class="relative m-[2px] bg-white dark:bg-slate-800 rounded-2xl overflow-hidden">
+              {/* Project Image */}
+              <div class="relative h-48 overflow-hidden">
+                {/* <ImageWithFallback
+                  src={project.image}
+                  alt={project.title}
+                  class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                /> */}
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+
+              {/* Project Content */}
+              <div class="p-6 space-y-4">
+                <h3 class="text-slate-900 dark:text-white">{project.title}</h3>
+
+                <p class="text-slate-600 dark:text-slate-400 line-clamp-3">
+                  {project.description}
+                </p>
+
+                {/* Tags */}
+                <div class="flex flex-wrap gap-2">
+                  {project.tags.map((tag, index) => (
+                    <span class="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-full text-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Action Buttons */}
+                <div class="flex space-x-3 pt-4">
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg transition-all transform hover:scale-105"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>Live Demo</span>
+                  </a>
+                  <a
+                    href={project.codeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center justify-center px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-lg transition-all transform hover:scale-105"
+                    aria-label="View code"
+                  >
+                    <Github className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>
