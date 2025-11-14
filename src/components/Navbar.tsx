@@ -11,15 +11,30 @@ export default function Navigation() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
 
-    const [darkMode, setDarkMode] = useState(true);
+    const [darkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
-        if (darkMode) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
+        const savedTheme = localStorage.getItem("theme")
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+
+        if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+            setDarkMode(true)
+            document.documentElement.classList.add("dark")
         }
-    }, [darkMode]);
+    }, []);
+
+    const toggleTheme = () => {
+        const newTheme = !darkMode
+        setDarkMode(newTheme)
+
+        if (newTheme) {
+            document.documentElement.classList.add("dark")
+            localStorage.setItem("theme", "dark")
+        } else {
+            document.documentElement.classList.remove("dark")
+            localStorage.setItem("theme", "light")
+        }
+    }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -101,7 +116,7 @@ export default function Navigation() {
 
                         {/* Dark Mode Toggle */}
                         <button
-                            onClick={() => setDarkMode(!darkMode)}
+                            onClick={() => toggleTheme()}
                             className="p-2 rounded-lg bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors"
                             aria-label="Toggle dark mode"
                         >
@@ -116,7 +131,7 @@ export default function Navigation() {
                     {/* Mobile Menu Button */}
                     <div className="flex md:hidden items-center space-x-4">
                         <button
-                            onClick={() => setDarkMode(!darkMode)}
+                            onClick={() => toggleTheme()}
                             className="p-2 rounded-lg bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors"
                             aria-label="Toggle dark mode"
                         >

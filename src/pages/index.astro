@@ -5,31 +5,11 @@ import BigBen from "../images/BigBen.jpg";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
 import Project from "../components/Project.astro";
+import Experience from "../components/Experience.astro";
 ---
 
 <Layout title="Welcome to my Portfolio.">
-  <main class="md:text-2xl">
-    <!-- Hero Section -->
-    <Hero />
-  </main>
-
-  <!-- About Section -->
-  <About />
-
-  <!-- Projects Section -->
+  <Hero />
   <Project />
-
-  <!-- Contact Section -->
-  <section
-    id="contact"
-    class="min-h-screen max-w-5xl mx-auto p-6 flex flex-col justify-center"
-  >
-    <h3 class="text-3xl font-bold mb-4 text-primary">Contact Me</h3>
-    <p class="mb-4">Feel free to reach out via email or social media!</p>
-    <a
-      href="mailto:youremail@example.com"
-      class="bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-lg w-max"
-      >Email Me</a
-    >
-  </section>
+  <Experience />
 </Layout>

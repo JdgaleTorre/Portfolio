@@ -13,7 +13,7 @@ export default function HeroButton({
         <button
             onClick={() => {
                 const element = document.getElementById(section);
-                console.log(element);
+
                 if (element) {
                     const offset = 80;
                     const elementPosition =

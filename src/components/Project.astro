@@ -1,105 +1,18 @@
 ---
-import { ExternalLink, Filter, Github } from "lucide-react";
-import { ImageWithFallback } from "./ImageWithFallBack";
-
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  category: string;
-  liveUrl: string;
-  codeUrl: string;
-}
-
-const projects: Project[] = [
-  {
-    id: "1",
-    title: "DevTools",
-    description: `DevTools is a productivity and project management platform designed to streamline workflows through an intuitive Kanban-style interface. Built with a modern stack (Next.js, TypeScript, tRPC, Drizzle ORM, and Tailwind CSS), it allows users to create boards, manage tasks, and visualize progress effortlessly. 
- The app features AI-powered assistance to automatically generate and organize tasks, saving time and improving planning efficiency. With real-time updates, customizable themes, and drag-and-drop functionality, DevTools provides a modern and elegant experience for developers and teams looking to optimize their daily work.`,
-    tags: ["React", "TypeScript", "AI/LLMs", "Node.js", "PostgreSQL"],
-    liveUrl: "https://devtools.josegale.com",
-    codeUrl: "https://github.com/JdgaleTorre/DevTools",
-    image:
-      "https://images.unsplash.com/photo-1575388902449-6bca946ad549?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxBSSUyMGRhc2hib2FyZCUyMGludGVyZmFjZXxlbnwxfHx8fDE3NjI5Njc3OTB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    category: "AI",
-  },
-  {
-    id: "2",
-    title: "Movinder",
-    description: `Movinder is a mobile-friendly web application built with Next.js that allows users to rate movies and receive personalized recommendations. The app collects rating data to train a neural network, which powers a content-based filtering system for accurate movie suggestions. It integrates analytics to understand user preferences and adapts dynamically to provide a tailored movie discovery experience.`,
-    tags: ["Python", "Django", "Machine Learning", "React", "PostgreSQL"],
-    liveUrl: "https://movinder.josegale.com",
-    codeUrl: "https://github.com/JdgaleTorre/Movinder",
-    image:
-      "https://images.unsplash.com/photo-1688678004647-945d5aaf91c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3ZpZSUyMGNpbmVtYSUyMHNjcmVlbnxlbnwxfHx8fDE3NjMwNDQxNDF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    category: "AI",
-  },
-
-  {
-    id: "3",
-    title: "Pokedex",
-    description: `Pokédex is a fan-made Pokémon encyclopedia built with Next.js and TypeScript. It fetches and displays comprehensive data for each Pokémon, including types, evolutions, and abilities. Designed with a clean UI and optimized for performance, this project demonstrates dynamic API integration, responsive design, and component-based architecture.`,
-    tags: ["React", "RESTful APIs", "Tailwind CSS", "TypeScript"],
-    liveUrl: "https://pokedex.josegale.com",
-    codeUrl: "https://github.com/JdgaleTorre/Pokedex",
-    image:
-      "https://images.unsplash.com/photo-1628968434441-d9c1c66dcde7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb2tlbW9uJTIwY29sb3JmdWwlMjBnYW1lfGVufDF8fHx8MTc2MzA0NDE0Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    category: "Frontend",
-  },
-  {
-    id: "4",
-    title: "Memory Game",
-    description: `A classic memory-matching game where players flip cards to find pairs of identical symbols. This project demonstrates logic-based JavaScript programming and DOM manipulation to create an interactive and engaging user experience. The responsive design ensures smooth gameplay across devices while maintaining a simple and intuitive interface.`,
-    tags: ["JavaScript", "CSS3", "HTML5", "Animations"],
-    liveUrl: "https://jdgaletorre.github.io/MemoryGame/",
-    codeUrl: "https://github.com/JdgaleTorre/MemoryGame",
-    image:
-      "https://images.unsplash.com/photo-1759868937448-423d3c7c8133?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZW1vcnklMjBjYXJkcyUyMGdhbWV8ZW58MXx8fHwxNjMwNDQxNDJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    category: "Frontend",
-  },
-  {
-    id: "5",
-    title: "Game of Life",
-    description: `A visual and interactive implementation of Conway’s Game of Life — a mathematical simulation that explores how simple rules can create complex patterns. This project focuses on algorithmic logic, grid-based rendering, and efficient JavaScript animation loops. Users can watch evolving generations unfold in real-time.`,
-    tags: ["JavaScript", "Canvas", "Algorithms", "HTML5"],
-    liveUrl: "https://jdgaletorre.github.io/GameOfLife2/",
-    codeUrl: "https://github.com/JdgaleTorre/GameOfLife2",
-    image:
-      "https://images.unsplash.com/photo-1761078739072-a10f63f3e478?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMHBhdHRlcm4lMjBncmlkfGVufDF8fHx8MTc2MzA0NDE0M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    category: "Frontend",
-  },
-  {
-    id: "6",
-    title: "Pomodoro Timer",
-    description: `A minimalist and productive Pomodoro timer built as a Progressive Web App (PWA) using Next.js. It helps users maintain focus through timed work sessions and structured breaks. The app supports offline mode, customizable intervals, and a smooth user interface — ideal for boosting productivity and maintaining consistent work habits.`,
-    tags: ["React", "PWA", "Tailwind CSS"],
-    liveUrl: "https://pomodoro-timer-lac.vercel.app/",
-    codeUrl: "https://github.com/JdgaleTorre/PomodoroTimer",
-    image:
-      "https://images.unsplash.com/photo-1734024653249-c6ba7b742ad2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0aW1lciUyMGNsb2NrJTIwbWluaW1hbGlzdHxlbnwxfHx8fDE3NjMwNDQxNDJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    category: "Frontend",
-  },
-  {
-    id: "7",
-    title: "Knight's Tour",
-    description: `An algorithmic visualization of the Knight’s Tour problem, where a chess knight visits every square on the board exactly once. Built with pure JavaScript and CSS, this project highlights algorithmic optimization, recursive backtracking, and real-time board visualization for an educational yet fun coding challenge.`,
-    tags: ["JavaScript", "HTML", "CSS"],
-    liveUrl: "https://jdgaletorre.github.io/KnightTour/",
-    codeUrl: "https://github.com/JdgaleTorre/KnightTour",
-    category: "Frontend",
-    image:
-      "https://images.unsplash.com/photo-1586165368502-1bad197a6461?q=80&w=2158&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-];
+import { ArrowRight, ExternalLink, Filter, Github } from "lucide-react";
+import { Image } from "astro:assets";
+import { projectsData } from "../projects";
+import { navigate } from "astro:transitions/client";
 
 const categories = ["All", "AI", "Frontend", "Backend"];
 const filteredProjects =
   "All" === "All"
-    ? projects
-    : projects.filter((project) => project.category === "All");
+    ? projectsData
+    : projectsData.filter((project) => project.category === "All");
+
+const navigateProject = (projectId: string) => {
+  navigate(projectId);
+};
 ---
 
 <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8">
@@ -149,10 +62,13 @@ const filteredProjects =
             <div class="relative m-[2px] bg-white dark:bg-slate-800 rounded-2xl overflow-hidden">
               {/* Project Image */}
               <div class="relative h-48 overflow-hidden">
-                <ImageWithFallback
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  inferSize={true}
+                  width={500}
+                  height={400}
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -175,25 +91,34 @@ const filteredProjects =
                 </div>
 
                 {/* Action Buttons */}
-                <div class="flex space-x-3 pt-4">
+                <div class="flex flex-col space-y-2 pt-4">
                   <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg transition-all transform hover:scale-105"
+                    href={`project/${project.id}`}
+                    class="w-full flex items-center justify-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg transition-all transform hover:scale-105"
                   >
-                    <ExternalLink className="w-4 h-4" />
-                    <span>Live Demo</span>
+                    <span>See More</span>
+                    <ArrowRight className="w-4 h-4" />
                   </a>
-                  <a
-                    href={project.codeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center justify-center px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-lg transition-all transform hover:scale-105"
-                    aria-label="View code"
-                  >
-                    <Github className="w-4 h-4" />
-                  </a>
+                  <div class="flex space-x-2">
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-lg transition-all"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      <span>Demo</span>
+                    </a>
+                    <a
+                      href={project.codeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex items-center justify-center px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-lg transition-all"
+                      aria-label="View code"
+                    >
+                      <Github className="w-4 h-4" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
