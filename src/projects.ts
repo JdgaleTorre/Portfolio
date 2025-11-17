@@ -123,7 +123,7 @@ export const projectsData: ProjectData[] = [
         id: "pokedex",
         title: "Pokedex",
         description:
-            "Pokédex is a fan-made Pokémon encyclopedia built with Next.js and TypeScript.",
+            'Interactive Pokémon encyclopedia with advanced search, filtering, and comparison features. Built with RESTful API integration and responsive design.',
         fullDescription:
             "Full interactive Pokémon encyclopedia with advanced filtering, evolution chains, and comparisons.",
         challenge:
@@ -180,7 +180,6 @@ export const projectsData: ProjectData[] = [
         codeUrl: "https://github.com/JdgaleTorre/MemoryGame",
         status: "Live",
         features: [
-            "3 difficulty levels",
             "Smooth 3D card flips",
             "Timer & score system",
         ],
