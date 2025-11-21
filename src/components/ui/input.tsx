@@ -1,0 +1,73 @@
+import { cn } from "@/lib/utils"
+import { type InputHTMLAttributes, forwardRef } from "react"
+
+export interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
+    variant?: "default" | "outline" | "filled" | "ghost"
+    inputSize?: "xs" | "sm" | "md" | "lg"
+    error?: boolean
+    label?: string
+}
+
+const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
+    ({ className, variant = "default", inputSize = "md", error = false, label, ...props }, ref) => {
+        return (
+
+            <div className={cn(
+                // Base styles
+                "w-full",
+                className,
+            )}>
+                {label && <label className="text-sm font-medium text-foreground">{label}</label>}
+                <input
+                    ref={ref}
+                    className={cn(
+                        // Base styles
+                        "w-full rounded-md font-medium transition-colors dark:text-white",
+                        "focus:outline-none focus:ring-2 focus:ring-offset-2 ",
+                        "disabled:cursor-not-allowed disabled:opacity-50",
+
+                        // Variant styles
+                        variant === "default" && [
+                            "border border-input bg-surface dark:bg-surface-dark text-foreground",
+                            "placeholder:text-muted-foreground",
+                            "focus:ring-ring",
+                        ],
+                        variant === "outline" && [
+                            "border-2 border-border bg-transparent text-foreground",
+                            "placeholder:text-muted-foreground",
+                            "focus:border-primary focus:ring-primary",
+                        ],
+                        variant === "filled" && [
+                            "border-0 bg-muted text-foreground",
+                            "placeholder:text-muted-foreground",
+                            "focus:bg-surface dark:bg-surface-dark focus:ring-ring",
+                        ],
+                        variant === "ghost" && [
+                            "border-0 bg-transparent text-foreground",
+                            "placeholder:text-muted-foreground",
+                            "focus:outline-none focus:ring-0 focus:ring-offset-0"
+
+                        ],
+
+                        // Size styles
+                        inputSize === "xs" && "h-6 px-1 py-1 text-xs ring-0 focus:ring-0 focus:ring-offset-0",
+                        inputSize === "sm" && "h-8 px-3 py-1 text-sm",
+                        inputSize === "md" && "h-10 px-4 py-2 text-base",
+                        inputSize === "lg" && "h-12 px-5 py-3 text-lg",
+
+                        // Error state
+                        error && "border-destructive focus:ring-destructive",
+
+                        className,
+                    )}
+
+                    {...props}
+                />
+            </div>
+        )
+    },
+)
+
+CustomInput.displayName = "CustomInput"
+
+export default CustomInput

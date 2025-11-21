@@ -1,0 +1,14 @@
+
+> portfolio@0.0.1 build
+> astro build
+
+'\\wsl.localhost\Ubuntu\home\jose\Projects\Portfolio'
+CMD.EXE was started with the above path as the current directory.
+UNC paths are not supported.  Defaulting to Windows directory.
+12:17:44 [WARN] Missing pages directory: src/pages
+Cannot find package.json from C:\Windows\
+  Stack trace:
+    at crawlFrameworkPkgs (file:///C:/Users/josed/AppData/Roaming/npm/node_modules/astro/node_modules/vitefu/src/index.js:33:13)
+    at async AstroBuilder.setup (file:///C:/Users/josed/AppData/Roaming/npm/node_modules/astro/dist/core/build/index.js:83:24)
+    at async build (file:///C:/Users/josed/AppData/Roaming/npm/node_modules/astro/dist/core/build/index.js:44:3)
+    at async runCommand (file:///C:/Users/josed/AppData/Roaming/npm/node_modules/astro/dist/cli/index.js:147:7)

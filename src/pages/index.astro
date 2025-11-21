@@ -3,13 +3,14 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import BigBen from "../images/BigBen.jpg";
 import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
 import Project from "../components/Project.astro";
 import Experience from "../components/Experience.astro";
+import Messenger from "../components/Messenger";
 ---
 
 <Layout title="Welcome to my Portfolio.">
   <Hero />
   <Project />
   <Experience />
+  <Messenger client:only />
 </Layout>
