@@ -1,0 +1,235 @@
+{
+    "profile": {
+        "name": "Jose Gale",
+        "location": "Dublin, Ireland",
+        "contact": {
+            "email": "josedavidgale@gmail.com",
+            "website": "https://www.josegale.com",
+            "github": "https://github.com/JdgaleTorre",
+            "linkedin": "https://www.linkedin.com/in/josedavidgale",
+            "phone": "+353832094639"
+        },
+        "summary": "Senior Full Stack Engineer with 10+ years of experience building cloud-native applications using React, Node.js, TypeScript, AWS, and GraphQL. Strong background in scalable architecture, microservices, and modern full-stack development. Experienced leader who has mentored engineers, managed Agile teams, and delivered high-performance systems. Available to start immediately.",
+        "voice_style": {
+            "tone": "friendly, concise, helpful, technical when needed",
+            "avoid": [
+                "overly formal language",
+                "generic corporate buzzwords"
+            ],
+            "prefers": [
+                "clear explanations",
+                "practical advice",
+                "breaking down complex topics simply"
+            ]
+        }
+    },
+    "career_goals": {
+        "current_goal": "Secure a Senior Full Stack Engineer role in Ireland or the EU.",
+        "interests": [
+            "AI-powered apps",
+            "SaaS platforms",
+            "developer tools",
+            "high-performance web apps",
+            "ML-based recommendation systems"
+        ],
+        "work_preferences": {
+            "role_level": "Senior Full Stack or Senior Frontend",
+            "work_mode": "Hybrid or remote",
+            "available_to_start": "Immediately"
+        }
+    },
+    "tech_preferences": {
+        "favorite_stack": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Node.js",
+            "tRPC",
+            "Tailwind CSS",
+            "PostgreSQL"
+        ],
+        "cloud": [
+            "AWS",
+            "Vercel (preferred)"
+        ],
+        "ai_tools": [
+            "OpenAI API",
+            "Hugging Face"
+        ],
+        "principles": [
+            "performance-first",
+            "accessibility",
+            "clean architecture",
+            "type-safe development",
+            "automated testing",
+            "secure coding"
+        ],
+        "currently_learning": [
+            "advanced ML models",
+            "system design at scale"
+        ]
+    },
+    "projects": {
+        "movinder": {
+            "name": "Movinder - Hybrid Movie Recommendation System",
+            "description": "A mobile-friendly platform built with Next.js that allows users to rate movies and receive personalized recommendations.",
+            "key_features": [
+                "Hybrid neural network combining collaborative filtering + content-based filtering",
+                "Neural network deployed and executed in a Hugging Face Space",
+                "Type-safe API integration using tRPC",
+                "Auth with NextAuth",
+                "Database with Drizzle ORM and PostgreSQL"
+            ],
+            "tech_stack": [
+                "Next.js",
+                "TypeScript",
+                "tRPC",
+                "Drizzle ORM",
+                "NextAuth",
+                "PostgreSQL",
+                "Hugging Face"
+            ],
+            "challenges_solved": [
+                "Running ML models efficiently despite local resource limitations",
+                "Building a fully type-safe full-stack pipeline",
+                "Designing a seamless rating experience for mobile"
+            ],
+            "link": "https://movinder.josegale.com"
+        },
+        "devtools": {
+            "name": "DevTools - AI-powered Project Management",
+            "description": "A Next.js platform that converts natural-language project descriptions into structured tasks and offers a real-time Kanban board.",
+            "key_features": [
+                "AI-based task generation via OpenAI API",
+                "Drag-and-drop Kanban interface",
+                "Collaborative task updates",
+                "GitHub OAuth authentication"
+            ],
+            "tech_stack": [
+                "Next.js",
+                "tRPC",
+                "Drizzle ORM",
+                "NextAuth",
+                "OpenAI API",
+                "Vercel"
+            ],
+            "challenges_solved": [
+                "Building real-time collaboration UI",
+                "Converting unstructured natural language into useful task structures",
+                "Ensuring secure authentication and smooth UX"
+            ],
+            "link": "https://devtools.josegale.com"
+        }
+    },
+    "work_experience": {
+        "code_exitos": {
+            "company": "Code Exitos",
+            "role": "Full Stack Developer",
+            "period": "Mar 2021 – Jan 2022",
+            "highlights": [
+                "Built Jobbox, a Django REST + React Native rental platform scaling to 1,000+ users",
+                "Added secure media uploads and cloud storage integration to Quotient App",
+                "Improved Clink survey visualization platform with chart configs, Tailwind responsive UI, and CI pipelines",
+                "Reduced post-deployment bugs by 15% using Jest + Cypress"
+            ],
+            "technologies": [
+                "React Native",
+                "Django REST",
+                "NestJS",
+                "AWS",
+                "Jest",
+                "Cypress",
+                "Tailwind"
+            ]
+        },
+        "farsiman": {
+            "company": "Farsiman Group",
+            "role": "Full Stack Developer / Scrum Master",
+            "period": "Nov 2011 – Oct 2020",
+            "highlights": [
+                "Led a team of 7 developers with Agile, improving team efficiency by 20%",
+                "Integrated banking payment processing into custom POS systems",
+                "Implemented authentication & data protection aligned with GDPR",
+                "Developed a Logistics Monitor system tracking 100+ parcels daily"
+            ],
+            "technologies": [
+                "Jira",
+                "Git",
+                "Custom POS",
+                "API development",
+                "Role-based access control"
+            ]
+        },
+        "subway": {
+            "company": "Subway",
+            "role": "Floor Staff",
+            "period": "Oct 2022 – Present",
+            "notes": "Part-time while completing MSc in Data Analytics."
+        }
+    },
+    "education": {
+        "msc": "CCT College Dublin — MSc in Data Analytics (Jan 2025)",
+        "business_master": "Unitec — Master’s in Business Management (Oct 2015)",
+        "bachelor": "Universidad Católica de Honduras — Bachelor in Computer Science (Jan 2011)"
+    },
+    "skills": {
+        "languages": [
+            "JavaScript",
+            "TypeScript",
+            "Python",
+            "Java (familiar)"
+        ],
+        "frontend": [
+            "React",
+            "Next.js",
+            "Tailwind CSS",
+            "CSS Grid",
+            "Flexbox",
+            "Web Components",
+            "Redux"
+        ],
+        "backend": [
+            "Node.js",
+            "Express.js",
+            "Django",
+            "REST APIs",
+            "GraphQL",
+            "Microservices"
+        ],
+        "databases": [
+            "PostgreSQL",
+            "MySQL",
+            "MongoDB",
+            "DynamoDB"
+        ],
+        "cloud_devops": [
+            "AWS",
+            "GitHub",
+            "CI/CD pipelines",
+            "Jest",
+            "Cypress"
+        ],
+        "additional": [
+            "Secure Coding",
+            "AI/LLMs",
+            "Dashboard UI",
+            "Authentication",
+            "Responsive Design"
+        ]
+    },
+    "personal": {
+        "interests": [
+            "movies",
+            "AI",
+            "cloud engineering",
+            "UI/UX",
+            "data analytics"
+        ],
+        "hobbies": [
+            "playing video games",
+            "watching films",
+            "exploring new tech stacks"
+        ],
+        "fun_fact": "Built an entire movie recommendation system from scratch just to combine my love for films and machine learning."
+    }
+}
