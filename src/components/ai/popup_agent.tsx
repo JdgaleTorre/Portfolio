@@ -1,10 +1,10 @@
 "use client"
 import type React from "react"
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useChat, type UIMessage } from "@ai-sdk/react";
 
 
-import { Loader2, Send, Sparkles, X } from "lucide-react";
+import { BotIcon, Loader2, Send, Sparkles, X } from "lucide-react";
 import Button from "../ui/button";
 import { Card } from "../ui/card";
 import { Textarea } from "../ui/textarea";
@@ -109,17 +109,23 @@ export function AIAgentPopup() {
         }
     };
 
+    const endRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        endRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [messages]);
+
+
     return (
         <>
             <Button
-                size="lg"
+                size="md"
                 onClick={() => setIsOpen(!isOpen)}
                 className={cn(
-                    "fixed bottom-14 text-white right-6 z-50 px-6 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 hover:opacity-90 shadow-lg shadow-blue-500/50",
+                    "fixed rounded-full bottom-14 text-white right-6 z-50 w-14 h-14 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 hover:opacity-90 shadow-lg shadow-blue-500/50",
                 )}
             >
-                <Sparkles className="w-5 h-5 mr-2" />
-                AI Agent
+                <BotIcon className="w-12 h-12" />
             </Button>
 
             {isOpen && (
@@ -129,9 +135,9 @@ export function AIAgentPopup() {
                         <div className="flex items-center justify-between p-4 border-b">
                             <div className="flex items-center gap-2">
                                 <div className="w-8 h-8 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
-                                    <Sparkles className="w-5 h-5 text-white" />
+                                    <BotIcon className="w-5 h-5 text-white" />
                                 </div>
-                                <h2 className="text-foreground">AI Project Assistant</h2>
+                                <h2 className="text-foreground">Portfolio Chatbot</h2>
                             </div>
                             <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)}>
                                 <X className="w-5 h-5" />
@@ -161,7 +167,8 @@ export function AIAgentPopup() {
                                     </div>
                                 </div>
                             ))}
-
+                            <div ref={endRef}></div>
+                            {/* 
                             {status !== 'ready' && messages[messages.length - 1]?.role === 'user' && (
                                 <div className="flex justify-start">
                                     <div className="bg-slate-100 text-slate-900 px-4 py-2 rounded-lg flex items-center gap-2">
@@ -169,7 +176,7 @@ export function AIAgentPopup() {
                                         Thinking...
                                     </div>
                                 </div>
-                            )}
+                            )} */}
                         </div>
 
                         {/* Input area */}
@@ -185,7 +192,7 @@ export function AIAgentPopup() {
                                     value={input}
                                     onChange={e => setInput(e.target.value)}
                                     onKeyDown={handleKeyPress}
-                                    placeholder="Describe your project... (e.g., 'Build a recipe sharing app with user profiles and favorites')"
+                                    placeholder="Ask me anything about Jose Gale’s experience, skills, or projects."
                                     className="resize-none"
                                     rows={3}
                                     disabled={status !== 'ready'}
