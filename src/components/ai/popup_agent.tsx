@@ -15,6 +15,8 @@ import { marked } from "marked";
 
 export function AIAgentPopup() {
     const [isOpen, setIsOpen] = useState(false);
+    const [unreadCount, setUnreadCount] = useState(0);
+    const [lastReadMessageCount, setLastReadMessageCount] = useState(0);
     const firstMessages = [{
         id: 'welcome', role: 'assistant', parts: [{
             type: 'text', text: `Hey there! I'm the portfolio chatbot.`
@@ -30,10 +32,20 @@ export function AIAgentPopup() {
         transport: new DefaultChatTransport({
             api: '/api/chat',
         }),
-        messages: [...firstMessages]
+        messages: firstMessages,
     });
     const [input, setInput] = useState('');
 
+    const messageCount = messages.length;
+
+    useEffect(() => {
+        if (isOpen) {
+            setLastReadMessageCount(messageCount);
+            setUnreadCount(0);
+        } else {
+            setUnreadCount(Math.max(0, messageCount - lastReadMessageCount));
+        }
+    }, [isOpen, messageCount, lastReadMessageCount]);
 
     const handleKeyPress = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter' && !e.shiftKey) {
@@ -59,9 +71,18 @@ export function AIAgentPopup() {
                 onClick={() => setIsOpen(!isOpen)}
                 className={cn(
                     "fixed rounded-full bottom-14 text-white right-6 z-50 w-14 h-14 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 hover:opacity-90 shadow-lg shadow-blue-500/50",
+                    unreadCount > 0 && "animate-bounce"
                 )}
             >
-                <BotIcon className="w-12 h-12" />
+                <div className="relative w-14 h-14 flex justify-between items-center">
+
+                    <BotIcon className="w-10 h-10" />
+                    {unreadCount > 0 && (
+                        <span className="absolute -top-1 -right-1 min-w-5 h-5 px-1 rounded-full bg-red-500 text-[10px] font-bold flex items-center justify-center border border-white shadow-md">
+                            {unreadCount}
+                        </span>
+                    )}
+                </div>
             </Button>
 
             {isOpen && (
@@ -98,21 +119,13 @@ export function AIAgentPopup() {
                                                 part.type === 'text' ? <span>{part.text}</span> : null,
                                             )
                                             : message.parts.map((part, index) =>
-                                                part.type === 'text' ? <div className="prose dark:prose-invert" dangerouslySetInnerHTML={{ __html: marked(part.text) }}></div> : null,
+                                                part.type === 'text' ? <div className={`prose dark:prose-invert prose-h1:font-bold prose-h1:text-xl prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl prose-headings:underline`}
+                                                    dangerouslySetInnerHTML={{ __html: marked(part.text) }}></div> : null,
                                             )}
                                     </div>
                                 </div>
                             ))}
                             <div ref={endRef}></div>
-                            {/* 
-                            {status !== 'ready' && messages[messages.length - 1]?.role === 'user' && (
-                                <div className="flex justify-start">
-                                    <div className="bg-slate-100 text-slate-900 px-4 py-2 rounded-lg flex items-center gap-2">
-                                        <Loader2 className="w-4 h-4 animate-spin" />
-                                        Thinking...
-                                    </div>
-                                </div>
-                            )} */}
                         </div>
 
                         {/* Input area */}

@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 
-const mockMessages = [
+export const mockMessages = [
     {
         id: 'welcome', role: 'assistant', parts: [{
             type: 'text', text: `Hey there! I'm the portfolio chatbot.`
