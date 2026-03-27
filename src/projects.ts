@@ -18,11 +18,61 @@ export interface ProjectData {
         database?: string[];
         cloud?: string[];
         tools?: string[];
+        ai?: string[];
     };
 }
 
 export const projectsData: ProjectData[] = [
     {
+        id: 'astrova',
+        title: 'Astrova',
+        description: 'A full-stack NASA space data explorer with real-time asteroid tracking, Mars rover gallery, Earth imagery, and AI-powered insights.',
+        fullDescription: 'Astrova is a full-stack space exploration application built with React, Node.js and Express that connects to NASA\'s Open APIs to let users explore the cosmos. It features an Astronomy Picture of the Day viewer, Mars Rover photo gallery, Near Earth Object asteroid tracker with AI insights, and EPIC Earth imagery — all wrapped in a space-themed UI with data visualisations.',
+        challenge: 'The main challenge was integrating multiple NASA APIs with different response shapes and rate limits, while keeping the frontend responsive and the AI cache layer efficient to reduce OpenAI costs.',
+        image: '/images/astrova.jpg',
+        tags: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'OpenAI', 'NASA APIs', 'Docker'],
+        category: 'Full Stack',
+        liveUrl: 'https://astrova.josegale.com',
+        codeUrl: 'https://github.com/JdgaleTorre/Astrova',
+        status: 'Live',
+        features: [
+            'Astronomy Picture of the Day with date range navigation',
+            'Mars Rover photo gallery with rover, sol and camera filters',
+            'Near Earth Object asteroid tracker with hazard classification',
+            'EPIC full-disc Earth imagery viewer with date picker',
+            'NASA Image and Video Library search',
+            'AI-powered space insights using OpenAI GPT-4o mini',
+            'MongoDB caching layer to reduce AI API costs',
+            'Responsive design for mobile, tablet and desktop',
+        ],
+        technicalDetails: [
+            {
+                title: 'NASA API Integration',
+                description: 'Built a Node.js/Express proxy server that handles authentication, rate limiting and data transformation for 6 NASA endpoints including APOD, Mars Rover, NeoWs, EPIC and Image Library.',
+            },
+            {
+                title: 'AI Insight Caching',
+                description: 'Implemented MongoDB caching layer for OpenAI responses using MD5 hashed prompts as keys with 7-day TTL, eliminating redundant API calls for repeated queries.',
+            },
+            {
+                title: 'Data Visualisation',
+                description: 'Built interactive Recharts visualisations for asteroid size vs miss distance, rover photo counts by sol, and hazard classification breakdowns.',
+            },
+            {
+                title: 'Error Handling',
+                description: 'Centralised Axios-aware error middleware with NASA-specific status code messages, distinguishing between NASA API errors, network failures and application errors.',
+            },
+        ],
+        techStack: {
+            frontend: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'TanStack Router', 'TanStack Query', 'Recharts', 'shadcn/ui'],
+            backend: ['Node.js', 'Express', 'TypeScript', 'Zod', 'Helmet', 'Axios'],
+            database: ['MongoDB', 'Mongoose', 'MongoDB Atlas'],
+            ai: ['OpenAI GPT-4o mini'],
+            cloud: ['Vercel', 'Render'],
+            tools: ['Docker', 'GitHub Actions', 'Jest', 'React Testing Library'],
+        },
+    }
+    , {
         id: "devtools",
         title: "DevTools",
         description: 'AI-powered productivity and task management system with intelligent scheduling, automated workflows, and real-time collaboration features.',
